@@ -35,7 +35,8 @@ model_output = pd.read_csv('BetaBinomialOut.csv')
 # App Definition and Layout
 ######################################################################
 app = dash.Dash(__name__, external_stylesheets= [dbc.themes.CYBORG])
-
+# initialize server for gunicorn, I guess?
+server = app.server
 # Master Div
 app.layout = dbc.Container([
     dbc.Row([
