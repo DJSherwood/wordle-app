@@ -14,7 +14,7 @@ df = df[ (df['PuzzleNum'] < 467) &
          (df['PuzzleNum'] != 421) & 
          (df['Difficulty'] != 'Undefined')].copy()
 # make player list
-player_list = ['Player1','Player2','Player3','Player4','Player5','Player6']
+player_list = ['Da.M','Ka.W','St.S','Ca.W','Da.S','Ka.S']
 # focus on puzzles which have all 6 players
 df = df[ df['Name'].isin(player_list) ].copy()
 B = df.groupby(['PuzzleNum']).agg({'Name':'count'}).reset_index()
@@ -46,7 +46,7 @@ app.layout = dbc.Container([
         dbc.Col([
             html.P("Player Selection"),
             dcc.Dropdown(id='crossfilter-xaxis-column', options=[
-                {'label': i, 'value': i} for i in ['Da.M','Ka.W','St.S','Ca.W','Da.S','Ka.S']
+                {'label': i, 'value': i} for i in player_list
             ],
                 className="mr-3",
                 value='Player1'
