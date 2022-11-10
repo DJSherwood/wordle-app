@@ -46,7 +46,7 @@ app.layout = dbc.Container([
         dbc.Col([
             html.P("Player Selection"),
             dcc.Dropdown(id='crossfilter-xaxis-column', options=[
-                {'label': i, 'value': i} for i in ['Player1', 'Player2', 'Player3', 'Player4', 'Player5', 'Player6']
+                {'label': i, 'value': i} for i in ['Da.M','Ka.W','St.S','Ca.W','Da.S','Ka.S']
             ],
                 className="mr-3",
                 value='Player1'
