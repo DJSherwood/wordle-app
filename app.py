@@ -39,8 +39,9 @@ app = dash.Dash(__name__, external_stylesheets= [dbc.themes.CYBORG])
 server = app.server
 # Master Div
 app.layout = dbc.Container([
+    # this is the header
     dbc.Row([
-        dbc.Col(html.H1("Ranking & Performance", className='text-center mb-4'), width=12)
+        dbc.Col(html.H1("Wordle Ranking & Performance", className='text-center my-4 text-success'), width=12)
     ]),
     dbc.Row([
         dbc.Col([
@@ -50,12 +51,7 @@ app.layout = dbc.Container([
             ],
                 className="mr-3",
                 value='Da.M'
-            )],
-            width=5
-        ),
-    ]),
-    dbc.Row([
-        dbc.Col([
+            ),
             dbc.Card([
                 dbc.CardGroup([
                     dbc.Card([
@@ -85,7 +81,7 @@ app.layout = dbc.Container([
                 ])
             ])
         ],
-        width=5
+        lg=5, className='border border-secondary py-2 mx-3'
         ),
         dbc.Col([
             html.P("Player Ranking"),
@@ -103,7 +99,7 @@ app.layout = dbc.Container([
                         'showlegend': False,
                         'font_color': "white"}))
         ],
-        width=5
+        lg=5, className='border border-secondary py-2 mx-3'
         )
     ]),
     dbc.Row([
@@ -111,16 +107,18 @@ app.layout = dbc.Container([
             html.P("Predicted Performance"),
             dcc.Graph(id='model-output',figure={})
         ],
-        width=5
+        lg=5, className='border border-secondary py-2 mx-3'
         ),
         dbc.Col([
             html.P("Actual Performance"),
             dcc.Graph(id='bars-fail-distribution', figure={})
         ],
-        width=5
+        lg=5, className='border border-secondary py-2 mx-3'
         )
-    ])
-])
+    ], className='mt-lg-5')
+],
+    className='px-2'
+)
 
 # # update bars-fail-distribution
 @app.callback(
@@ -223,4 +221,4 @@ def update_model_preds(selected_player):
 
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
