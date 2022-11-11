@@ -10,16 +10,16 @@ import plotly.express as px
 ######################################################################
 df = pd.read_csv('auto_wordle_scores.csv')
 # limit to the puzzle in which we last have words (396)
-df = df[ (df['PuzzleNum'] < 467) & 
-         (df['PuzzleNum'] != 421) & 
+df = df[ (df['PuzzleNum'] != 420) & 
+         (df['PuzzleNum'] != 421) &
          (df['Difficulty'] != 'Undefined')].copy()
 # make player list
 player_list = ['Da.M','Ka.W','St.S','Ca.W','Da.S','Ka.S']
 # focus on puzzles which have all 6 players
-df = df[ df['Name'].isin(player_list) ].copy()
-B = df.groupby(['PuzzleNum']).agg({'Name':'count'}).reset_index()
+df1 = df[ df['Name'].isin(player_list) ].copy()
+B = df1.groupby(['PuzzleNum']).agg({'Name':'count'}).reset_index()
 C = B[ B['Name'] == 6 ].copy()
-df2 = df[ df['PuzzleNum'].isin(C['PuzzleNum'].to_list())]
+df2 = df1[ df1['PuzzleNum'].isin(C['PuzzleNum'].to_list())]
 # static ranking data frame
 ranking_df = df2.groupby(['Name']).agg({'Fails':'sum'}).reset_index()
 ranking_df = ranking_df.sort_values(by=['Fails'], ascending=True)
@@ -49,7 +49,7 @@ app.layout = dbc.Container([
                 {'label': i, 'value': i} for i in player_list
             ],
                 className="mr-3",
-                value='Player1'
+                value='Da.M'
             )],
             width=5
         ),
