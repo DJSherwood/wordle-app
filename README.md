@@ -2,6 +2,4 @@
 This repository stores the code for the app. 
 Bootstrap components are used in conjunction with Dash to give it a modern look. 
 
-It looks like this: 
-
-![app_draft.PNG](app_draft.PNG)
+Check out the [Wordle App](https://king-prawn-app-3f3fq.ondigitalocean.app/)! 
